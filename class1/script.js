@@ -777,21 +777,121 @@
 // console.log(arr);
 
 // practice 1
-let scores = {
-  Kim: { math: 50, english: 70 },
-  Park: { math: 70, english: 60 },
-  Lee: { math: 80, english: 50 },
-};
 
-let arr = [];
-for (key in scores) {
-  arr.push(scores[key]);
-}
-console.log(arr);
+// 1
+// let scores = {
+//   Kim: { math: 50, english: 70 },
+//   Park: { math: 70, english: 60 },
+//   Lee: { math: 80, english: 50 },
+// };
 
-let result = scores.filter(element => )
+// let scoreArray = Object.values(scores);
+// let result = scoreArray.reduce(function (prevReturn, currentElement) {
+//   return prevReturn + currentElement.english;
+// }, 0);
 
-// let result = scores.reduce(
-//   (prevScore, currentElement) => prevScore + currentElement,
+// console.log(result);
+
+// 2
+// let scores = {
+//   Kim: { math: 50, english: 70 },
+//   Park: { math: 70, english: 60 },
+//   Lee: { math: 80, english: 50 },
+// };
+
+// let scoreArray = Object.values(scores);
+// let result = scoreArray.reduce(
+//   (prevReturn, currentElement) => prevReturn + currentElement.english,
 //   0,
 // );
+
+// console.log(result);
+
+// practice 2
+// let students = [
+//   { id: 1, name: 'Kim', score: { math: 50, english: 70 } },
+//   { id: 2, name: 'Park', score: { math: 80, english: 60 } },
+//   { id: 3, name: 'Lee', score: { math: 70, english: 50 } },
+// ];
+
+// let result = students.filter(student => student.score.math >= 60);
+// console.log(result);
+
+// practice 3
+
+// 1
+// let students = [
+//   { id: 1, name: 'Kim', score: { math: 50, english: 70 } },
+//   { id: 2, name: 'Park', score: { math: 80, english: 60 } },
+//   { id: 3, name: 'Lee', score: { math: 70, english: 50 } },
+// ];
+
+// let result = students.map(student => {
+//   return {
+//     id: student.id,
+//     name: student.name,
+//     score: student.score,
+//     sum: student.score.math + student.score.english,
+//   };
+// });
+
+// console.log(result);
+
+// 2
+// 미완성
+// let students = [
+//     { id: 1, name: 'Kim', score: { math: 50, english: 70 } },
+//     { id: 2, name: 'Park', score: { math: 80, english: 60 } },
+//     { id: 3, name: 'Lee', score: { math: 70, english: 50 } },
+//   ];
+
+//   let result = students.map(student => {
+//     return {
+//       students['sum'] = student.score.math + student.score.english;
+//       return student
+//     };
+//   });
+
+//   console.log(result);
+
+// 04. 객체/배열 활용하기
+
+// 1 Destructuring
+// let user = {
+//   name: 'Kim',
+//   age: 20,
+// };
+
+// let { name, age } = user; // destructuring
+// // let name = user.name
+// // let age = user.age
+// alert(`저는 ${name}이고, ${age}살 입니다.`);
+
+// 2 스프레드와 레스트 문법
+// spread
+// let user = {
+//   name: 'Kim',
+//   age: 20,
+// };
+
+// // let busanUser = {
+// //   name: 'Kim',
+// //   age: 20,
+// //   city: 'Busan',
+// // };
+
+// let busanUser = {
+//   ...user, //{name: 'Kim', age: 20} -> name: 'Kim, age: 20
+//   city: 'Busan',
+// };
+
+// rest
+// let seoulUser = {
+//   name: 'Kim',
+//   age: 20,
+//   city: 'Seoul',
+// };
+
+// let { city, ...user } = seoulUser;
+// console.log(user);
+// console.log(city);
