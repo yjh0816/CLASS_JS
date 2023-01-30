@@ -650,3 +650,148 @@
 // console.log(player);
 // player.heal();
 // console.log(player);
+
+// 03. 배열
+
+// 1 배열
+// let fruits = ['사과', '바나나', '배'];
+// console.log(fruits[0]);
+
+// fruits[0] = '복숭아';
+// console.log(fruits);
+
+// fruits[5] = '복숭아';
+// console.log(fruits);
+
+// 2 기본 메서드
+// let fruits = ['사과', '바나나', '배'];
+// let fruit = fruits.pop();
+// console.log(fruit);
+// console.log(fruits);
+
+// let fruits = ['사과', '바나나', '배'];
+// let fruit = fruits.push('복숭아');
+// console.log(fruits);
+
+// let fruits = ['사과', '바나나', '배'];
+// let fruit = fruits.shift();
+// console.log(fruit);
+// console.log(fruits);
+
+// let fruits = ['사과', '바나나', '배'];
+// let fruit = fruits.unshift('복숭아');
+// console.log(fruits);
+
+// let fruits = ['사과', '바나나', '배'];
+// console.log(fruits.indexOf('사과'));
+
+// let fruits = ['사과', '바나나', '배'];
+// console.log(fruits.includes('사과'));
+// console.log(fruits.includes('복숭아'));
+
+// 3 반복문
+// let fruits = ['사과', '바나나', '배'];
+// for (let i = 0; i < fruits.length; i++) {
+//   console.log(fruits[i]);
+// }
+
+// let fruits = ['사과', '바나나', '배'];
+// // for in을 써도 작동을 하기는 하나 훨씬 느림
+// // array도 객체이기 때문
+// for (let fruit of fruits) {
+//   console.log(fruit);
+// }
+
+// let fruits = ['사과', '바나나', '배'];
+// fruits.forEach(fruit => {
+//   console.log(fruit);
+// });
+
+// let fruits = ['사과', '바나나', '배'];
+// fruits.forEach((fruit, index) => {
+//   console.log(`${fruit}, ${index}`);
+// });
+
+// 4 진짜 진짜 중요한 메서드
+// find, 하나만 찾음
+// let users = [
+//   { id: 1, name: 'Kim' },
+//   { id: 2, name: 'Lee' },
+//   { id: 3, name: 'Park' },
+// ];
+
+// let result = users.find((element, index) => element.name === 'Kim');
+
+// console.log(result);
+
+// filter, 여러개를 return
+// let users = [
+//   { id: 1, name: 'Kim' },
+//   { id: 2, name: 'Kim' },
+//   { id: 3, name: 'Park' },
+// ];
+
+// let result = users.filter(element => element.name === 'Kim');
+// let result = users.filter(element => {
+//  return element.name === 'Kim';
+// });
+
+// console.log(result);
+
+// map, 모든 요소마다 함수 실행
+// let users = [
+//   { id: 1, name: 'Kim' },
+//   { id: 2, name: 'Kim' },
+//   { id: 3, name: 'Park' },
+// ];
+
+// let result = users.map(element => {
+//   return { id: element.id, name: element.name, age: 20 };
+// });
+// console.log(result);
+
+// reduce, 모든 요소 접근, for보다 훨씬 빠름
+// 첫번째 인자는 이전 리턴 값, 초기 값을 지정해줘야함
+// let arr = [1, 2, 3, 4, 5];
+// let result = arr.reduce(
+//   (prevReturn, currentElement) => prevReturn + currentElement,
+//   0,
+// );
+// console.log(result);
+
+// 5 정렬
+// let arr = [2, 3, 1, 5, 4];
+// arr.sort();
+// console.log(arr);
+
+// string처리 되어 2 > 10
+// let arr = [1, 2, 10];
+// arr.sort();
+// console.log(arr);
+
+// 숫자
+// let arr = [1, 2, 10];
+// arr.sort((a, b) => a - b); // 숫자가 더 큰 것을 뒤에 배치해라
+// // a - b < 0 -> a < b : 음수라면 a, b 순으로 배치
+// // a - b > 0 -> a > b : 양수라면 b, a 순으로 배치
+// console.log(arr);
+
+// practice 1
+let scores = {
+  Kim: { math: 50, english: 70 },
+  Park: { math: 70, english: 60 },
+  Lee: { math: 80, english: 50 },
+};
+
+let arr = [];
+for (key in scores) {
+  arr.push(scores[key]);
+}
+console.log(arr);
+
+let result = scores.filter(element => )
+
+// let result = scores.reduce(
+//   (prevScore, currentElement) => prevScore + currentElement,
+//   0,
+// );
