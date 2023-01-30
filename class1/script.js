@@ -141,3 +141,128 @@
 // }
 
 // practice 2
+// let firstInput = Number(prompt('첫번째 숫자를 입력하세요',''));
+// let secondInput = Number(prompt('두번째 숫자를 입력하세요',''));
+// isOdd = firstInput % 2 ? true : false;
+// isOdd2 = secondInput % 2 ? true : false;
+// if (isOdd && isOdd2) {
+//     alert('isOdd');
+// } 
+
+// 강사님 풀이
+// if (num1 % 2 === 0 && num2 ===0) {
+//     alert('짝수');
+// } else if (num1 % 2 === 1 && num2 % 2 === 1) {
+//     alert('홀수');
+// }
+
+
+
+// 06. 반복문
+
+// 1 while
+// let i = 0;
+
+// while (i < 3) {
+//     alert(i);
+//     i++;
+// }
+
+// 2 for
+// for (let i = 0; i < 3; i++) {
+//     alert(i);
+// }
+
+// 3 break, continue
+// for (let i = 0; i < 10; i++) {
+// 	if (i === 2) break;
+// 	alert(i);
+// }
+
+// for (let i = 0; i < 10; i++) {
+// 	if (i === 2) continue;
+// 	alert(i);
+// }
+
+// practice 1
+// for(let i = 1; i < 100+1; i++) {
+//     if (i % 2 === 0) console.log(i);
+// }
+
+// practice 2
+// input = prompt('그만을 입력하세요','');
+// while (input !== '그만') {
+//     input = prompt('그만을 입력하세요','');
+// }
+
+// 강사님 풀이
+// let flag = 0;
+// while (!flag) {
+//     input = prompt('그만할까요?');
+//     if (input === '그만') flag = 1;
+// }
+
+
+// 07. 함수
+
+// 1 함수
+// function showMsg(){
+//     alert('안녕안녕');
+//     alert('안녕안녕');
+//     alert('안녕안녕');
+// }
+
+// function showMsg(msg){
+//     alert(msg);
+// }
+
+// mag = '잘가';
+
+// function showMsg(){
+//     let msg = '안녕';
+//     alert(msg);
+// }
+// alert(msg);
+
+// showMsg();
+
+// 2 리턴
+// function sum(a, b) {
+//     return a + b;
+// }
+
+// alert(sum(3, 4));
+
+// result = sum(3, 4);
+// alert(result);
+
+// practice 1
+// function multiples(num) {
+//     for (let i=1; i<10+1; i++) {
+//         console.log(num * i);
+//     }
+// }
+// multiples(2);
+
+// practice 2
+// function multiples(num) {
+//     let result = 0;
+//     for (let i=1; i<10+1; i++) {
+//         result += num * i;
+//     }
+//     return result;
+// }
+
+// answer = multiples(1);
+// alert(answer);
+
+// practice 3
+// function checkAdult(name, age) {
+//     let isAdult = '';
+//     if (age >= 20) {
+//         isAdult = '성인';
+//     } else {
+//         isAdult = '미성년자';
+//     }
+//     alert(`${name}님은 ${isAdult}입니다.`)
+// }
