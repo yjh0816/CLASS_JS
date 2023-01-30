@@ -471,5 +471,182 @@
 // };
 
 // console.log(user);
+// alert(user);
 
-// 2
+// 2 in 연산자
+// const user = {
+//   name: 'Kim',
+//   age: 20,
+// };
+// alert('age' in user);
+// alert('email' in user);
+
+// for (let key in user) {
+//   alert(key);
+//   alert(user[key]);
+// }
+
+// Object.keys(user); // ['name', 'age']
+// Object.values(user); // ['Kim', '20']
+// Object.entries(user); // [['name','Kim'], ['age','20']]
+// Object.hasOwn(user, 'name'); // true
+
+// 3 복사
+// 깊은 복사
+// let msg1 = '안녕';
+// let msg2 = msg1; // msg2 = 안녕
+// msg1 = '잘가';
+// alert(msg2); // 안녕
+
+// 앝은 복사, 참조
+// let user1 = {
+//   name: 'Kim',
+// };
+// let user2 = user1; // user2 = {name: 'Kim'}
+// user1.name = 'Lee'; // user1 = {name: 'Lee'}
+// alert(user2.name); // Lee
+
+// 하나하나 복사
+// let user1 = {
+//   name: 'Kim',
+// };
+// let user2 = {};
+// for (let key in user1) {
+//   user2[key] = user1[key];
+// }
+
+// let user2 = Object.assign({}, user1);
+
+// 4 메서드
+// let user = {
+//   name: 'Kim', // 프로퍼티
+//   age: 20, // 프로퍼티
+//   // 메서드
+//   sayHi: function () {
+//     alert('안녕');
+//   },
+// };
+// user.sayHi(); // 안녕
+
+// let user = {
+//   name: 'Kim', // 프로퍼티
+//   age: 20, // 프로퍼티
+//   // 메서드
+//   sayHi: function () {
+//     alert(`${this.name}`);
+//   },
+// };
+// user.sayHi(); // this는 무조건 user가 아님, this는 . 앞에있는 객체를 의미
+
+// let user = {
+//   name: 'Kim', // 프로퍼티
+//   age: 20, // 프로퍼티
+// };
+
+// function sayHi() {
+//   alert(`${this.name}`);
+// }
+
+// user.sayHi = sayHi;
+// console.log(user);
+// user.sayHi();
+
+// let user = {
+//   name: 'Kim', // 프로퍼티
+//   age: 20, // 프로퍼티
+//   sayHi: () => {
+//     alert(`${this.name}`);
+//   },
+// };
+
+// user.sayHi();
+// // 화살표 함수를 사용하면 this로 접근할 수 없다
+// 바로 바깥만 참조
+
+// let user = {
+//   name: 'Kim', // 프로퍼티
+//   age: 20, // 프로퍼티
+//   sayHi: function () {
+//     let showMsg = () => alert(`${this.name}`);
+//     showMsg();
+//   },
+// };
+
+// user.sayHi();
+// // 바로 바깥은 참조할 수 있어 여기선 참조 가능
+
+// 5 new 생성자
+// let user = new Object();
+// console.log(user);
+
+// 생성자 함수
+// function User(name, age) {
+//   this.name = name;
+//   this.age = age;
+//   this.sayHi = function () {
+//     alert(`저는 ${this.name}입니다.`);
+//   };
+// }
+// let user1 = new User('Kim', 20);
+// let user2 = new User('Lee', 25);
+// user1.sayHi();
+// console.log(user1, user2);
+
+// 6 getter setter
+// let user = {
+//   name: 'Kim',
+//   //   age: 20,
+//   birthyear: 2000,
+
+//   // .info로 접근했을 때 실행해
+//   get info() {
+//     // return `${this.age}살 ${this.name}`;
+//     return `${2023 - this.birthyear}살 ${this.name}`;
+//   },
+// };
+
+// alert(user.info); // 괄호 필요 없음
+// // 나이를 저장하면 매년 바꿔야하지만 생년 월일을 저장하면 그럴 필요가 없음
+
+// let user = {
+//   name: 'Kim',
+//   // 이 프로퍼티의 값을 지정하면 아래 코드를 실행해라
+//   set age(value) {
+//     alert(`${value}를 할당하셨네요!`);
+//   },
+// };
+// user.age = 2;
+
+// practice 1
+// let scores = {
+//   Kim: 50,
+//   Park: 70,
+//   Lee: 80,
+// };
+
+// let res = 0;
+// for (let key in scores) {
+//   res += scores[key];
+// }
+
+// console.log(res);
+
+// practice 2
+// let player = {
+//   hp: 80,
+//   mp: 50,
+//   heal: function () {
+//     this.mp -= 10;
+//     this.hp += 10;
+//   },
+// };
+
+// // p1 = player;
+// // console.log(p1);
+// // p1.heal();
+// // console.log(p1);
+
+// player.heal();
+// console.log(player);
+// player.heal();
+// console.log(player);
