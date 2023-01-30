@@ -266,3 +266,99 @@
 //     }
 //     alert(`${name}님은 ${isAdult}입니다.`)
 // }
+
+
+
+// Practice 1
+function rps() {
+    flag = true;
+    while(flag) {
+        let userInput = Number(prompt('1)가위 2)바위 3)보 4)exit'));
+        if (userInput === 4) return flag = false;
+        let computerInput = Math.floor(Math.random() * 3) + 1;
+        isUserWin = '';
+        isComWin = '';
+
+        if (userInput > computerInput) {
+            if (userInput != 3) {
+                isUserWin = '승';
+                isComWin = '패';
+            } else {
+                isUserWin = '패';
+                isComWin = '승';
+            }
+        } else if (userInput < computerInput) {
+            if (userInput != 3) {
+                isUserWin = '패';
+                isComWin = '승';
+            } else {
+                isUserWin = '승';
+                isComWin = '패';
+            }
+        } else {
+            isUserWin = '무';
+            isComWin = '무';
+        }
+        console.log(computerInput);
+        alert(`유저: ${isUserWin}, 컴퓨터: ${isComWin}`);
+    };
+}
+
+// 강사님 풀이
+let choices = ['가위', '바위', '보'];
+let user = prompt('1)가위 2)바위 3)보 4)exit');
+let computer = choices[Math.floor(Math.random() * 3)];
+
+const isUserWin = (computer === '가위' && user === '바위')
+|| (computer === '바위' && user === '보')
+|| (computer === '보' && user === '가위')
+
+const isUserLose = (computer === '가위' && user === '보')
+|| (computer === '바위' && user === '가위')
+|| (computer === '보' && user === '바위')
+
+alert('컴퓨터는 ' + computer );
+if (computer === user) {
+    alert('무승부');
+} else if (isUserWin) {
+    alert('유저 승');
+} else if (isUserLose) {
+    alert('유저 패');
+}
+
+// Practice 2
+function numGuess() {
+    flag = true;
+    ans = Math.floor(Math.random() * 100) + 1;
+
+    while(flag) {
+        let userInput = Number(prompt('숫자를 입력하세요'));
+        if (userInput > ans) {
+            alert('다운');
+        } else if (userInput < ans) {
+            alert('업');
+        } else {
+            alert('You win!');
+            flag = false;
+        }
+    }
+}
+
+// Practice 3
+function baskinRobins31() {
+    goal = 0;
+    while (true) {
+        let userInput = Number(prompt('숫자를 입력하세요(1~3)'));
+        for (let i = 1; i < userInput+1; i++) {
+            console.log('user');
+            console.log(++goal);
+            if (goal === 31) return false;
+        }
+        let computerInput = Math.floor(Math.random() * 3) + 1;
+        for (let i = 1; i < computerInput+1; i++) {
+            console.log('com');
+            console.log(++goal);
+            if (goal === 31) return true;
+        }
+    }
+}
