@@ -491,3 +491,52 @@
 // before, after // 외부
 
 // 2 인접 요소 추가
+// let firstBox = document.getElementById('firstBox');
+// beforeBegin = before
+// afterBegin = prepend
+// beforeEnd = append
+// afterEnd = after
+
+// 05. 이벤트 기초
+
+// 1 브라우저 이벤트
+// let onclick = document.getElementsByTagName('button')[0];
+// onclick.onclick = function () {
+//   alert('2');
+// };
+
+// function toggleMenu() {
+//   let menu = document.getElementById('menu');
+//   menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+// }
+
+// 2 this
+// this는 이벤트가 발생한 그 html tag를 가리킨다
+
+// 3 이벤트 리스너
+// let firstBox = document.getElementById('firstBox');
+// function sayHi() {
+//   alert('안녕');
+// }
+
+// firstBox.addEventListener('click', sayHi); // 함수에 () 를 붙이면 안됨!
+// let inputBox = document.getElementById('inputBox');
+// inputBox.addEventListener('focus', sayHi);
+
+// // 4 이벤트 객체
+// function showResult() {
+//   num1 = document.getElementById('firstInput');
+//   num2 = document.getElementById('secondInput');
+
+//   res = document.getElementById('result');
+//   res.innerHTML = `<h1 id="answer">${
+//     Number(num1.value) + Number(num2.value)
+//   }</h1>`;
+// }
+
+// function minusNum() {
+//   res = document.getElementById('answer').innerText;
+//   res.innerText = `<h1>${Number(res) - 1}</h1>`;
+// }
+
+// 07. 함수 호출 스케쥴링
