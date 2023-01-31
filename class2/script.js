@@ -389,7 +389,7 @@
 
 // 02. DOM API 기본
 
-// 1
+// 1 id
 // console.log(document);
 // console.log(document.head);
 // console.log(document.body);
@@ -409,3 +409,85 @@
 // content.innerText = 'asd';
 
 // console.log(title, content);
+
+// 2 class
+// let div = document.getElementsByClassName('second-div'); // 요소들
+// let div = document.getElementsByClassName('second-div')[0]; // 요소들
+// console.log(div);
+// div.innerText = 'asds';
+
+// 3 tag
+// let a = document.getElementsByTagName('a')[0];
+// console.log(a.href);
+// a.href = 'http://daum.net';
+
+// 4 query selector all
+// let div = document.querySelectorAll('div');
+// console.log(div);
+
+// let div = document.querySelectorAll('div.second');
+// console.log(div);
+
+// let a = document.querySelectorAll('p > a');
+// console.log(a);
+
+// let first = document.querySelectorAll('#first');
+// console.log(first);
+
+// let second = document.querySelectorAll('.second');
+// console.log(second);
+
+// practice
+// let firstId = document.getElementById('first');
+// console.log(firstId);
+
+// let a = document.getElementsByTagName('a');
+// console.log(a);
+
+// let div = document.getElementsByTagName('div');
+// console.log(div);
+
+// let second = document.getElementsByClassName('second');
+// console.log(second);
+
+// let secondDiv = document.querySelectorAll('div.second');
+// console.log(secondDiv);
+
+// let secondDivA = document.querySelectorAll('div.second > a');
+// console.log(secondDivA);
+
+// 03. DOM API 활용
+
+// 1 노드의 프로퍼티
+// let firstDiv = document.getElementById('firstDiv');
+// firstDiv.tagName; // div
+// firstDiv.innerHtml;
+// firstDiv.innerText;
+
+// 2 스타일 수정하기
+// let blueDiv = document.getElementsByClassName('blue-div')[0];
+// let redDiv = document.getElementsByClassName('red-div')[0];
+
+// 3 HTML 프로퍼티
+// let img = document.getElementById('img');
+// let google = document.getElementById('google');
+
+// practice 1
+// let naver = document.querySelectorAll('a')[1];
+// naver.innerText = '네이버로 가기';
+// naver.setAttribute('href', 'http://www.naver.com');
+
+// practice 2 미완성
+// let box = document.getElementsByClassName('box')[0];
+// box.classList.add('box');
+// box.classList.add('blue-background');
+// box.innerHTML = '<h1>안녕</h1>';
+// box.innerHTML.classList.add('white');
+
+// 04. DOM 요소 관리
+
+// 1 요소 생성 및 추가
+// append, prepend // 내부
+// before, after // 외부
+
+// 2 인접 요소 추가

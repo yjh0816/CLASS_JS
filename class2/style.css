@@ -1,0 +1,44 @@
+.blue-div {
+    background-color: blue;
+}
+
+.green-div {
+    background-color: green;
+}
+
+.red-div {
+    background-color: red;
+}
+
+.white-text {
+    color: white;
+}
+
+.big-text {
+    font-size: 3rem;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+    border: solid 1px black;
+}
+
+.blue-background {
+    background-color: blue;
+}
+
+#firstBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+    background-color: bisque;
+    border: solid 1px black;
+}
