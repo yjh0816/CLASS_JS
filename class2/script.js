@@ -540,3 +540,48 @@
 // }
 
 // 07. 함수 호출 스케쥴링
+
+// 1 setTimeout
+// function countUp(target) {
+//   target.innerText = Number(target.innerText) + 1;
+// }
+// let num = document.getElementById('num');
+// let timer = setInterval(countUp, 1000, num); // 타이머 아이디가 timer 에 할당
+
+// let stopButton = document.getElementById('stopButton');
+// stopButton.onclick = function () {
+//   clearInterval(timer); // let timer 에서 만든 그 타이머를 중지
+// };
+
+// 2 Date
+// let now = new Date(); // 현재 시간을 자동으로 가져옴
+// console.log(now);
+
+// practice
+function setCountry(event) {
+  countryName = event;
+  let now = new Date().toLocaleString('kr-KO', {
+    timeZone: 'Asia/Seoul',
+  });
+  if (countryName === '런던') {
+    now = new Date().toLocaleString('kr-KO', {
+      timeZone: 'Europe/London',
+    });
+  } else if (countryName === '뉴욕') {
+    now = new Date().toLocaleString('kr-KO', {
+      timeZone: 'America/New_York',
+    });
+  } else {
+    now = new Date().toLocaleString('kr-KO', {
+      timeZone: 'Asia/Seoul',
+    });
+  }
+  try {
+    let time = document.getElementById('time');
+    time.innerText = now;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+let timer = setInterval(setCountry, 1000, '서울');

@@ -1,18 +1,14 @@
 <html>
     <head>
         <title>타이틀</title>
-        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div id="firstDiv">
-            <input id="firstInput" type="text">
-            <input id="secondInput" type="text">
-            <button onclick="showResult();">더하기!</button>
+        <div>
+            <button onclick="setCountry(event.target.innerText)">런던</button>
+            <button onclick="setCountry(event.target.innerText)">뉴욕</button>
+            <button onclick="setCountry(event.target.innerText)">서울</button>
         </div>
-        <div id="result">
-        </div>
-        <button onclick="minusNum();">-</button>
-        <button onclick="plusNum();">+</button>
+        <h1 id="time">시간</h1>
     </body>
     <script src="script.js"></script>
 </html>
