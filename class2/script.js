@@ -558,35 +558,56 @@
 // console.log(now);
 
 // practice
+// let now = '';
+// let timer = '';
 
-let now = '';
-let timer = '';
+// function setCountryLondon() {
+//   clearInterval(timer);
+//   now = new Date().toLocaleString('kr-KO', {
+//       timeZone: 'Europe/London',
+//     });
+//   let time = document.getElementById('time');
+//   time.innerText = now;
+//   timer = setInterval(setCountryLondon, 1000);
+// }
+// function setCountryNewYork() {
+//   clearInterval(timer);
+//   now = new Date().toLocaleString('kr-KO', {
+//       timeZone: 'America/New_York',
+//     });
+//   let time = document.getElementById('time');
+//   time.innerText = now;
+//   timer = setInterval(setCountryNewYork, 1000);
 
-function setCountryLondon() {
-  clearInterval(timer);
-  now = new Date().toLocaleString('kr-KO', {
-      timeZone: 'Europe/London',
-    });
+// }
+// function setCountrySeoul() {
+//   clearInterval(timer);
+//   now = new Date().toLocaleString('kr-KO', {
+//       timeZone: 'Asia/Seoul',
+//     });
+//   let time = document.getElementById('time');
+//   time.innerText = now;
+//   timer = setInterval(setCountrySeoul, 1000);
+// }
+
+// 강사님 풀이
+const TIMEZONE = {
+  london: 'Europe/London',
+  newyork: 'America/New_York',
+  seoul: 'Asia/Seoul',
+};
+let timer;
+
+function setTimeByCountry(country) {
+  let now = new Date().toLocaleString('kr-KO', {
+    timeZone: TIMEZONE[country],
+  });
   let time = document.getElementById('time');
   time.innerText = now;
-  timer = setInterval(setCountryLondon, 1000);
 }
-function setCountryNewYork() {
-  clearInterval(timer);
-  now = new Date().toLocaleString('kr-KO', {
-      timeZone: 'America/New_York',
-    });
-  let time = document.getElementById('time');
-  time.innerText = now;
-  timer = setInterval(setCountryNewYork, 1000);
 
-}
-function setCountrySeoul() {
+function setTime(event) {
   clearInterval(timer);
-  now = new Date().toLocaleString('kr-KO', {
-      timeZone: 'Asia/Seoul',
-    });
-  let time = document.getElementById('time');
-  time.innerText = now;
-  timer = setInterval(setCountrySeoul, 1000);
+  // setTimeByCountry(event.target.id);
+  timer = setInterval(setTimeByCountry, 1000, event.target.id);
 }
