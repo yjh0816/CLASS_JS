@@ -558,30 +558,35 @@
 // console.log(now);
 
 // practice
-function setCountry(event) {
-  countryName = event;
-  let now = new Date().toLocaleString('kr-KO', {
-    timeZone: 'Asia/Seoul',
-  });
-  if (countryName === '런던') {
-    now = new Date().toLocaleString('kr-KO', {
+
+let now = '';
+let timer = '';
+
+function setCountryLondon() {
+  clearInterval(timer);
+  now = new Date().toLocaleString('kr-KO', {
       timeZone: 'Europe/London',
     });
-  } else if (countryName === '뉴욕') {
-    now = new Date().toLocaleString('kr-KO', {
+  let time = document.getElementById('time');
+  time.innerText = now;
+  timer = setInterval(setCountryLondon, 1000);
+}
+function setCountryNewYork() {
+  clearInterval(timer);
+  now = new Date().toLocaleString('kr-KO', {
       timeZone: 'America/New_York',
     });
-  } else {
-    now = new Date().toLocaleString('kr-KO', {
+  let time = document.getElementById('time');
+  time.innerText = now;
+  timer = setInterval(setCountryNewYork, 1000);
+
+}
+function setCountrySeoul() {
+  clearInterval(timer);
+  now = new Date().toLocaleString('kr-KO', {
       timeZone: 'Asia/Seoul',
     });
-  }
-  try {
-    let time = document.getElementById('time');
-    time.innerText = now;
-  } catch (err) {
-    console.log(err);
-  }
+  let time = document.getElementById('time');
+  time.innerText = now;
+  timer = setInterval(setCountrySeoul, 1000);
 }
-
-let timer = setInterval(setCountry, 1000, '서울');
