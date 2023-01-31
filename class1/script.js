@@ -895,3 +895,249 @@
 // let { city, ...user } = seoulUser;
 // console.log(user);
 // console.log(city);
+
+//복습
+
+// 1 비구조할당 destructuring
+// let user = {
+//   name: 'Kim',
+//   age: 20,
+// };
+
+// const showMsg = user => {
+//   const { name, age, mail = 'Kim@email.com' } = user;
+//   alert(`${name}, ${age}, ${mail}`);
+// };
+
+// showMsg(user);
+
+// 2 비구조할당 destructuring2
+// let user1 = {
+//   name: 'Kim',
+//   age: 20,
+// };
+// let user2 = {
+//   name: 'Lee',
+//   age: 15,
+// };
+
+// // const showMsg = user => {
+// //   const { name: userName1, age: userAge1 } = user1;
+// //   const { name: userName2, age: userAge2 } = user2;
+// //   alert(`${userName1}, ${userAge2}`);
+// // };
+
+// const showMsg = () => {
+//     const { city, street } = ?;
+//   };
+
+// showMsg(user1);
+
+// 3 스프레드 객체
+// let user = {
+//   name: 'Kim',
+//   age: 20,
+// };
+
+// let busanUser = {
+//   ...user, // name: 'Kim', age: 20
+//   city: 'Busan',
+// };
+
+// let seoulUser = {
+//   ...user,
+//   city: 'Seoul',
+// };
+
+// 4 스프레드 배열
+// let users = ['Kim', 'Park'];
+// let newUsers = [...users, 'Lee'];
+
+// console.log(users, newUsers);
+
+// 5 rest
+// let seoulUser = {
+//   name: 'Kim',
+//   age: 20,
+//   city: 'Seoul',
+//   street: 'Dongdaemun',
+// };
+// const { city, ...user } = seoulUser;
+// console.log(city); // Seoul
+// console.log(user); // {name: 'Kim', age: 20, street: 'Dongdaemun'}
+
+// 6 rest array
+// let users = ['Kim', 'Park', 'Lee'];
+// const [user1, ...rest] = users;
+// console.log(user1);
+// console.log(rest);
+
+// 7 function spread,rest
+// const sum = (a, b, c) => {
+//   return a + b + c;
+// };
+// let result = sum(1, 2, 3);
+// console.log(result); // 6
+
+// const sum_rest = (...num) => {
+//   console.log(num); // num = [1, 2, 3, 4, 5]
+//   return num.reduce((sum, current) => sum + current, 0);
+// };
+// let result2 = sum_rest(1, 2, 3, 4, 5);
+// console.log(result2);
+
+// let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+// let result3 = sum_rest(...numbers);
+// console.log(result3);
+
+// practice 1-1
+// let students = [
+//   { id: 1, name: 'Kim', score: { math: 50, english: 70 } },
+//   { id: 2, name: 'Park', score: { math: 80, english: 60 } },
+//   { id: 3, name: 'Lee', score: { math: 70, english: 50 } },
+// ];
+
+// let result = students.filter(
+//   student => student.score.english + student.score.math >= 140,
+// );
+
+// console.log(result);
+
+// practice 1-2
+// let students = [
+//   { id: 1, name: 'Kim', score: { math: 50, english: 70, science: 60 } },
+//   { id: 2, name: 'Kim', score: { math: 80, english: 60, science: 100 } },
+//   { id: 3, name: 'Lee', score: { math: 70, english: 50, science: 40 } },
+// ];
+
+// let sum = 0;
+// let result = students.reduce(
+//   (sum, student) =>
+//     sum + student.score.math + student.score.english + student.score.science,
+//   0,
+// );
+
+// console.log(result);
+
+// 강사님 풀이
+// let sum = students.reduce((sum, current) => {
+//   return (
+//     sum + current.score.math + current.score.english + current.score.science
+//   );
+// }, 0);
+
+// console.log(sum);
+
+// let sum = students.reduce((sum, current) => {
+//   return (
+//     sum +
+//     Object.values(current.score).reduce((sum, current) => sum + current, 0)
+//   );
+// }, 0);
+
+// console.log(sum);
+
+// practice 1-3
+// let students = [
+//   { id: 1, name: 'Kim', score: { math: 50, english: 70 } },
+//   { id: 2, name: 'Kim', score: { math: 80, english: 60 } },
+//   { id: 3, name: 'Lee', score: { math: 70, english: 50 } },
+// ];
+
+// let result = students.map(student => {
+//   return { ...student, name: 'Park' };
+// });
+
+// console.log(result);
+
+// practice 1-4
+// let students = [
+//   {
+//     id: 1,
+//     name: 'Kim',
+//     score: { math: 50, english: 70, korean: 30, physics: 60 },
+//   },
+//   {
+//     id: 2,
+//     name: 'Kim',
+//     score: { math: 80, english: 60, korean: 40, physics: 40 },
+//   },
+//   {
+//     id: 3,
+//     name: 'Lee',
+//     score: { math: 70, english: 50, korean: 50, physics: 80 },
+//   },
+// ];
+
+// let result1 = students.filter(student => student.name === 'Kim');
+// console.log(result1);
+
+// let result2 = result1.map(student => {
+//   return { ...student, score: { ...student.score, science: 100, history: 100 } };
+// });
+
+// console.log(result2);
+
+// practice 2-1
+// let students = [
+//   { id: 1, name: 'Kim', score: { math: 50, english: 70 } },
+//   { id: 2, name: 'Park', score: { math: 80, english: 60 } },
+//   { id: 3, name: 'Lee', score: { math: 70, english: 50 } },
+// ];
+
+// let result = students.map(student => {
+//   let { math, english } = student.score;
+//   return { ...student, score: { ...student.score, sum: math + english } };
+// });
+
+// console.log(result);
+
+// practice 2-2
+// let students = [
+//   { id: 1, name: 'Kim', score: { math: 50, english: 70 } },
+//   { id: 2, name: 'Park', score: { math: 80, english: 60 } },
+//   { id: 3, name: 'Lee', score: { math: 70, english: 50 } },
+//   { id: 4, name: 'Choi', score: { math: 70, english: 50 } },
+// ];
+
+// let students2 = [
+//   { id: 1, name: 'Kim', score: { math: 50, english: 70 } },
+//   { id: 2, name: 'Park', score: { math: 80, english: 60 } },
+// ];
+
+// 도전 미완성
+// const sum = (...students) => {
+//   students.reduce((sum, student) => {
+//     let { math, english } = student.score;
+//     return sum + math + english;
+//   }, 0);
+// };
+
+// 강사님 풀이
+// const sum = (...student) => {
+//   return student.reduce((sum, current) => {
+//     const { math, english } = current.score;
+//     return sum + math + english;
+//   }, 0);
+// };
+
+// let result = sum(...students);
+// console.log(result);
+
+// 7 function spread,rest
+// const sum = (a, b, c) => {
+//   return a + b + c;
+// };
+// let result = sum(1, 2, 3);
+// console.log(result); // 6
+
+// const sum_rest = (...num) => {
+//   console.log(num); // num = [1, 2, 3, 4, 5]
+//   return num.reduce((sum, current) => sum + current, 0);
+// };
+// let result2 = sum_rest(1, 2, 3, 4, 5);
+// console.log(result2);
+
+// let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+// let result3 = sum_rest(...numbers);
+// console.log(result3);
