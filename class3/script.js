@@ -304,22 +304,85 @@ function appendText(text, callback) {
 //   appendText('셍');
 // };
 
-function appendDiv(callback) {
-  // let body = document.body;
-  // body.innerHTML = `<div style="width:100px; heigth:100px"></div>`;
-  let div = document.createElement('div');
-  div.style.width = '100px';
-  div.style.height = '100px';
-  setTimeout(() => {
-    document.body.append(div);
-    callback();
-  }, 2000);
-}
+// practice
 
-const step1 = () => {
-  appendDiv(() => {
-    let div = document.querySelectorAll('body > div')[0];
-    console.log(div);
-    div.style.backgroundColor = 'lightblue';
-  });
-};
+// function appendDiv(callback) {
+//   let div = document.createElement('div');
+//   div.style.width = '100px';
+//   div.style.height = '100px';
+//   setTimeout(() => {
+//     document.body.append(div);
+//     callback();
+//   }, 2000);
+// }
+
+// appendDiv(() => {
+//   let div = document.querySelectorAll('body > div')[0];
+//   console.log(div);
+//   div.style.backgroundColor = 'lightblue';
+// });
+
+// 02. Promise
+
+// 1 Promise의 개념
+
+// resolve
+// let promise = new Promise((resolve, reject) => {
+//   setTimeout(() => resolve('실행 완료'), 1000);
+// });
+// // promise 내부 코드가 실행이 완료됐을때 실행할 코드
+// promise.then(result => {
+//   alert(result);
+// });
+
+// reject, promise chaning
+// let promise = new Promise((resolve, reject) => {
+//   setTimeout(() => reject(new Error('에러 발생')), 1000);
+// });
+
+// promise.then(() => {
+// }).catch(error => {
+//   alert(error);
+// }).finally(() => {
+
+// })
+
+// promise chaning
+// let promise = new Promise((resolve, reject) => {
+//   setTimeout(() => reject(new Error('에러 발생')), 1000);
+// });
+
+// promise.then(result => {
+//   return result
+// }).then(result => {
+//   return result
+// })
+
+// 03. Async, Await
+
+// 1 async와 await
+
+// async
+// 비동기 함수 선언
+// async function hello() {
+//   return '안녕'; // 무조건 promise를 return
+// }
+
+// hello().then(result => {
+//   console.log(result);
+// });
+
+// await 기다렸다가 실행
+// async function hello() {
+//   let promise = new Promise((resolve, reject) => {
+//     setTimeout(() => resolve('안녕'), 1000);
+//   });
+//   let result = await promise; // 프로미스 이행되기까지 대기 (then과 동일)
+//   alert(result);
+// }
+
+// hello();
+
+// 04. Fetch
+
+// 1 네트워크 요청을 하는 이유
