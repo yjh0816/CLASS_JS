@@ -516,6 +516,7 @@ async function getPost(id) {
 }
 
 async function updatePost(post, id) {
+  console.log(post);
   let response = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${id}`,
     {
@@ -526,7 +527,7 @@ async function updatePost(post, id) {
       },
     },
   );
-  let data = await response;
+  let data = await response.json();
   return data;
 }
 
@@ -547,12 +548,18 @@ async function deletePost(id) {
   let data = await response.json();
   return data;
 }
+
+async function erasePost(id) {
+  let data = await deletePost(id);
+  let div = document.getElementById(`${id}`);
+  div.remove();
+}
 async function showPosts() {
   let data = await getPosts();
   data.forEach(element => {
     document.body.insertAdjacentHTML(
       'beforeBegin',
-      `<div><h2>${element.title}</h2><br><p>${element.body}</p><button onclick="deletePost(${element.id})">삭제</button></div>`,
+      `<div id="${element.id}"><h2>${element.title}</h2><br><p>${element.body}</p><button onclick="erasePost(${element.id})">삭제</button></div>`,
     );
   });
 }
@@ -561,9 +568,25 @@ async function getOnePost(id) {
   let data = await getPost(id);
   let title = document.getElementById('title');
   let body = document.getElementById('body');
-  console.log(data);
   title.value = data.title;
   body.value = data.body;
 }
-// showPosts();
+
+async function modifyPost(id) {
+  let title = document.getElementById('title').value;
+  let body = document.getElementById('body').value;
+  let post = {
+    title: title,
+    body: body,
+  };
+  let data = await updatePost(post, id);
+  console.log(data);
+  let div = document.getElementById(`${id}`);
+  div.innerHTML = `<div id="${data.id}"><h2>${data.title}</h2><br><p>${data.body}</p><button onclick="erasePost(${data.id})">삭제</button></div>`;
+}
+
+showPosts();
 getOnePost(1);
+
+let button = document.querySelectorAll('button')[0];
+button.onclick = () => modifyPost(1);
