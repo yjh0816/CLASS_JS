@@ -158,6 +158,67 @@
 // 04. CSS와 애니메이션
 
 // 1 트랜지션
-const fadeToRed = event => {
-  event.target.style.background = 'red';
+// const fadeToRed = event => {
+//   event.target.style.background = 'red';
+// };
+
+// const next = () => {
+//   let items = document.getElementsByClassName('item');
+//   for (let item of items) {
+//     item.style.transform = `translate(-100%)`;
+//   }
+// };
+
+// 3 Timing-function
+// const transition = event => {
+//   event.target.style.left = '500px';
+// };
+
+// 05. 실습: 인터랙티브 UI 구현하기
+
+// practice 1
+const showModal = () => {
+  let modal = document.getElementById('modal');
+  modal.style.display = 'block';
+};
+
+const closeModal = () => {
+  let modal = document.getElementById('modal');
+  modal.style.display = 'none';
+};
+
+// practice 2
+let nextCount = 0;
+const next = () => {
+  let items = document.getElementsByClassName('item');
+  nextCount++;
+  for (let item of items) {
+    item.style.transform = `translate(${-100 * nextCount}%)`;
+  }
+};
+
+const prev = () => {
+  let items = document.getElementsByClassName('item');
+  for (let item of items) {
+    item.style.transform = `translate(${-100 * nextCount + 100}%)`;
+  }
+  nextCount--;
+};
+
+const moveItem = (item, x) => {
+  console.log(x);
+  console.log(item.offsetWidth);
+  item.style.transform = `translate(${x - item.offsetWidth / 2}%)`;
+};
+
+const onMouseDown = event => {
+  const item = event.target;
+  // item.style.position = 'absolute';
+
+  const moveTargetByEvent = e => moveItem(item, e.clientX);
+
+  document.addEventListener('mousemove', moveTargetByEvent);
+  item.addEventListener('mouseup', () => {
+    document.removeEventListener('mousemove', moveTargetByEvent);
+  });
 };
