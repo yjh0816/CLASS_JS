@@ -95,43 +95,69 @@
 // });
 
 // practice 1
-let id = document.getElementById('id');
-let pw = document.getElementById('pw');
+// let id = document.getElementById('id');
+// let pw = document.getElementById('pw');
 
-const onFocus = event => {
-  event.target.style.width = '200px';
-  event.target.style.height = '60px';
-};
-const onBlur = event => {
-  event.target.style.width = '100px';
-  event.target.style.height = '30px';
-};
+// const onFocus = event => {
+//   event.target.style.width = '200px';
+//   event.target.style.height = '60px';
+// };
+// const onBlur = event => {
+//   event.target.style.width = '100px';
+//   event.target.style.height = '30px';
+// };
 
-id.addEventListener('focus', onFocus);
-pw.addEventListener('focus', onFocus);
-id.addEventListener('blur', onBlur);
-pw.addEventListener('blur', onBlur);
+// id.addEventListener('focus', onFocus);
+// pw.addEventListener('focus', onFocus);
+// id.addEventListener('blur', onBlur);
+// pw.addEventListener('blur', onBlur);
 
-const onKeydown = event => {
-  width = Number(event.target.style.width.slice(0, -2));
-  console.log(event.key);
-  if (event.key == 'Backspace') {
-    event.target.style.width = String(width - 1) + 'px';
-  } else {
-    event.target.style.width = String(width + 1) + 'px';
-  }
-};
-id.addEventListener('keydown', onKeydown);
-pw.addEventListener('keydown', onKeydown);
+// const onKeydown = event => {
+//   width = Number(event.target.style.width.slice(0, -2));
+//   console.log(event.key);
+//   if (event.key == 'Backspace') {
+//     event.target.style.width = String(width - 1) + 'px';
+//   } else {
+//     event.target.style.width = String(width + 1) + 'px';
+//   }
+// };
+// id.addEventListener('keydown', onKeydown);
+// pw.addEventListener('keydown', onKeydown);
 
-const onMousedown = event => {
-  event.target.style.backgroundColor = 'blue';
-};
-const onMouseup = event => {
-  event.target.style.backgroundColor = null;
-};
-id.addEventListener('mousedown', onMousedown);
-id.addEventListener('mouseup', onMouseup);
-pw.addEventListener('mousedown', onMousedown);
-pw.addEventListener('mouseup', onMouseup);
+// const onMousedown = event => {
+//   event.target.style.backgroundColor = 'blue';
+// };
+// const onMouseup = event => {
+//   event.target.style.backgroundColor = null;
+// };
+// id.addEventListener('mousedown', onMousedown);
+// id.addEventListener('mouseup', onMouseup);
+// pw.addEventListener('mousedown', onMousedown);
+// pw.addEventListener('mouseup', onMouseup);
+
 // 3 mouse event
+// const moveImage = (img, x, y) => {
+//   img.style.left = x - img.offsetWidth / 2;
+//   img.style.top = y - img.offsetHeight / 2;
+// };
+
+// const onMousedown = event => {
+//   const img = event.target;
+//   img.style.position = 'absolute';
+
+//   const moveTargetByEvent = e => moveImage(img, e.pageX, e.pageY);
+//   // 마우스를 움직이는 동안
+//   document.addEventListener('mousemove', moveTargetByEvent);
+//   img.addEventListener('mouseup', () => {
+//     document.removeEventListener('mousemove', moveTargetByEvent);
+//   });
+// };
+
+// 03. window 와 이벤트
+
+// 04. CSS와 애니메이션
+
+// 1 트랜지션
+const fadeToRed = event => {
+  event.target.style.background = 'red';
+};
