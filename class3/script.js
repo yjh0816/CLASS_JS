@@ -177,48 +177,149 @@
 // 05. 실습: 인터랙티브 UI 구현하기
 
 // practice 1
-const showModal = () => {
-  let modal = document.getElementById('modal');
-  modal.style.display = 'block';
-};
+// const showModal = () => {
+//   let modal = document.getElementById('modal');
+//   modal.style.display = 'flex';
+// };
 
-const closeModal = () => {
-  let modal = document.getElementById('modal');
-  modal.style.display = 'none';
-};
+// const closeModal = () => {
+//   let modal = document.getElementById('modal');
+//   modal.style.display = 'none';
+// };
 
 // practice 2
-let nextCount = 0;
-const next = () => {
-  let items = document.getElementsByClassName('item');
-  nextCount++;
-  for (let item of items) {
-    item.style.transform = `translate(${-100 * nextCount}%)`;
-  }
-};
+// let nextCount = 0;
+// const next = () => {
+//   let items = document.getElementsByClassName('item');
+//   nextCount++;
+//   for (let item of items) {
+//     item.style.transform = `translate(${-100 * nextCount}%)`;
+//   }
+// };
 
-const prev = () => {
-  let items = document.getElementsByClassName('item');
-  for (let item of items) {
-    item.style.transform = `translate(${-100 * nextCount + 100}%)`;
-  }
-  nextCount--;
-};
+// const prev = () => {
+//   let items = document.getElementsByClassName('item');
+//   for (let item of items) {
+//     item.style.transform = `translate(${-100 * nextCount + 100}%)`;
+//   }
+//   nextCount--;
+// };
 
-const moveItem = (item, x) => {
-  console.log(x);
-  console.log(item.offsetWidth);
-  item.style.transform = `translate(${x - item.offsetWidth / 2}%)`;
-};
+// practice 3 미완성
+// const moveItem = (item, x) => {
+//   console.log(x);
+//   console.log(item.offsetWidth);
+//   item.style.transform = `translate(${x}%)`;
+// };
 
-const onMouseDown = event => {
-  const item = event.target;
-  // item.style.position = 'absolute';
+// const onMouseDown = event => {
+//   let items = document.getElementsByClassName('item');
+//   for (let item of items) {
+//     const moveTargetByEvent = e => moveItem(item, e.clientX);
 
-  const moveTargetByEvent = e => moveItem(item, e.clientX);
+//     document.addEventListener('mousemove', moveTargetByEvent);
+//     item.addEventListener('mouseup', () => {
+//       document.removeEventListener('mousemove', moveTargetByEvent);
+//     });
+//   }
+// };
 
-  document.addEventListener('mousemove', moveTargetByEvent);
-  item.addEventListener('mouseup', () => {
-    document.removeEventListener('mousemove', moveTargetByEvent);
+// 06. 모듈
+
+// 6회차
+// 01. 비동기와 콜백
+
+// 1 콜백
+// let user = {
+//   name: 'Kim',
+//   age: 20,
+//   setUserInfo: function (name, age) {
+//     this.name = name;
+//     this.age = age;
+//   },
+// };
+
+// function dispatchUserInfo(user, name, age, callback) {
+//   callback.call(user, name, age);
+// }
+
+// dispatchUserInfo(user, 'Lee', 15, user.setUserInfo); // user.setUserInfo('Lee', 15) 실행
+
+// 2 비동기와 콜백
+// function appendHello() {
+//   let hello = document.createElement('p');
+//   hello.innerText = '안녕하세요';
+//   setTimeout(() => document.body.append(hello), 2000); // 비동기 동작
+// }
+
+// appendHello(); // 비동기 동작
+// console.log(document.getElementsByTagName('p'));
+
+// function appendHello(callback) {
+//   let hello = document.createElement('p');
+//   hello.innerText = '안녕하세요';
+//   setTimeout(() => {
+//     document.body.append(hello);
+//     callback();
+//   }, 2000); // 동기 동작
+// }
+
+// appendHello(() => {
+//   console.log(document.getElementsByTagName('p'));
+// }); // 동기 동작
+
+// 3 콜백 지옥
+function appendText(text, callback) {
+  let p = document.createElement('p');
+  p.innerText = text;
+  setTimeout(() => {
+    document.body.append(p);
+    callback();
+  }, 2000); // 동기 동작
+}
+
+//지옥
+// appendText('안', () => {
+//   appendText('녕', () => {
+//     appendText('하', () => {
+//       appendText('셍');
+//     });
+//   });
+// });
+
+// 개선
+// const step1 = () => {
+//   appendText('안', step2);
+// };
+
+// const step2 = () => {
+//   appendText('녕', step3);
+// };
+
+// const step3 = () => {
+//   appendText('하', step4);
+// };
+
+// const step4 = () => {
+//   appendText('셍');
+// };
+
+function appendDiv(callback) {
+  // let body = document.body;
+  // body.innerHTML = `<div style="width:100px; heigth:100px"></div>`;
+  let div = document.createElement('div');
+  div.style.width = '100px';
+  div.style.height = '100px';
+  setTimeout(() => {
+    document.body.append(div);
+    callback();
+  }, 2000);
+}
+
+const step1 = () => {
+  appendDiv(() => {
+    let div = document.querySelectorAll('body > div')[0];
+    console.log(div);
+    div.style.backgroundColor = 'lightblue';
   });
 };
