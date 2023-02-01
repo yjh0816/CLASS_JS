@@ -383,6 +383,187 @@ function appendText(text, callback) {
 
 // hello();
 
-// 04. Fetch
+// 05. Fetch 연습
 
-// 1 네트워크 요청을 하는 이유
+// 1 jsonplaceholder
+// let response = fetch('https://jsonplaceholder.typicode.com/posts/1');
+// console.log(response); // return Promise
+
+// fetch('https://jsonplaceholder.typicode.com/posts/1').then(result => {
+//   console.log(result);
+// });
+
+// 옛날 방식
+// fetch('https://jsonplaceholder.typicode.com/posts/1')
+//   .then(result => {
+//     return result.json();
+//   })
+//   .then(data => {
+//     console.log(data);
+//   });
+
+// 요즘 방식?
+// async function getPosts() {
+//   let response = await fetch('https://jsonplaceholder.typicode.com/posts');
+//   let data = await response.json();
+//   console.log(data);
+// }
+
+// addPost
+// post = {
+//   title: '안녕',
+//   body: '내용이야.내용이야.내용이야.내용이야.내용이야.',
+// };
+
+// async function addPost(post) {
+//   let response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+//     method: 'POST',
+//     body: JSON.stringify(post),
+//     headers: {
+//       'Content-type': 'application/json',
+//     },
+//   });
+//   let data = await response.json();
+//   console.log(data);
+// }
+
+// updatePost
+// post = {
+//   title: '수정된 제목',
+//   body: '수정된 내용',
+// };
+
+// async function updatePost(post, id) {
+//   let response = await fetch(
+//     `https://jsonplaceholder.typicode.com/posts/${id}`,
+//     {
+//       method: 'PUT',
+//       body: JSON.stringify(post),
+//       headers: {
+//         'Content-type': 'application/json',
+//       },
+//     },
+//   );
+//   let data = await response.json();
+//   console.log(data);
+// }
+
+// deletePost
+// async function deletePost(id) {
+//   let response = await fetch(
+//     `https://jsonplaceholder.typicode.com/posts/${id}`,
+//     {
+//       method: 'DELETE',
+//     },
+//   );
+//   let data = await response.json();
+//   console.log(data);
+// }
+
+// 2 get 활용하기
+// async function getPost(id) {
+//   let response = await fetch(
+//     `https://jsonplaceholder.typicode.com/posts/${id}`,
+//   );
+//   let data = await response.json();
+//   return data;
+// }
+
+// // getPost(1).then(data => {
+// //   let title = document.getElementById('title');
+// //   title.innerText = data.title;
+// //   let body = document.getElementById('body');
+// //   body.innerText = data.body;
+// // });
+
+// async function insertPost(id) {
+//   let data = await getPost(id);
+//   let title = document.getElementById('title');
+//   title.innerText = data.title;
+//   let body = document.getElementById('body');
+//   body.innerText = data.body;
+// }
+
+// 3 post 활용하기
+// async function addPost(post) {
+//   let response = await fetch(`https://jsonplaceholder.typicode.com/posts`, {
+//     method: 'POST',
+//     body: JSON.stringify(post),
+//     headers: {
+//       'Content-type': 'application/json',
+//     },
+//   });
+//   let data = await response.json();
+//   return data;
+// }
+
+// async function submitPost() {
+//   let post = {
+//     title: document.getElementById('title').value,
+//     body: document.getElementById('body').value,
+//   };
+//   let result = await addPost(post);
+//   console.log(result);
+// }
+
+// practice
+async function getPost(id) {
+  let response = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${id}`,
+  );
+  let data = await response.json();
+  return data;
+}
+
+async function updatePost(post, id) {
+  let response = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${id}`,
+    {
+      method: 'PUT',
+      body: JSON.stringify(post),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    },
+  );
+  let data = await response;
+  return data;
+}
+
+async function getPosts() {
+  let response = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+  let data = await response.json();
+  return data;
+}
+
+async function deletePost(id) {
+  console.log(id);
+  let response = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${id}`,
+    {
+      method: 'DELETE',
+    },
+  );
+  let data = await response.json();
+  return data;
+}
+async function showPosts() {
+  let data = await getPosts();
+  data.forEach(element => {
+    document.body.insertAdjacentHTML(
+      'beforeBegin',
+      `<div><h2>${element.title}</h2><br><p>${element.body}</p><button onclick="deletePost(${element.id})">삭제</button></div>`,
+    );
+  });
+}
+
+async function getOnePost(id) {
+  let data = await getPost(id);
+  let title = document.getElementById('title');
+  let body = document.getElementById('body');
+  console.log(data);
+  title.value = data.title;
+  body.value = data.body;
+}
+// showPosts();
+getOnePost(1);
