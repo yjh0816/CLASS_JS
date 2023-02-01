@@ -27,4 +27,111 @@
 //   highlight(event.target);
 // });
 
-// 4 브라우저 기본 동작 방지하기
+// practice
+// const TIMEZONE = {
+//   london: 'Europe/London',
+//   newyork: 'America/New_York',
+//   seoul: 'Asia/Seoul',
+// };
+// let timer;
+
+// function setTimeByCountry(country) {
+//   let now = new Date().toLocaleString('ko-KR', { timeZone: TIMEZONE[country] });
+//   let currentTime = document.getElementById('currentTime');
+//   currentTime.innerText = now;
+// }
+
+// function setTime(event) {
+//   clearInterval(timer);
+//   setTimeByCountry(event.target.id);
+//   timer = setInterval(setTimeByCountry, 1000, event.target.id);
+// }
+
+// let selectedButton;
+// const highlight = element => {
+//   if (selectedButton) {
+//     selectedButton.classList.toggle('highlight');
+//   }
+//   element.classList.toggle('highlight');
+//   return element;
+// };
+
+// let menu = document.getElementById('menu');
+// menu.addEventListener('click', event => {
+//   let target = event.target;
+//   selectedButton = highlight(target);
+//   setTime(event);
+// });
+
+// 02. 이벤트의 다양한 활용 방법
+
+// 1 input event
+
+// const onFocus = event => {
+//   event.target.style.backgroundColor = 'bisque';
+// };
+
+// 강사님 풀이
+// let id = document.getElementById('id');
+// let pw = document.getElementById('pw');
+
+// const onFocus = event => {
+//   event.target.style.backgroundColor = 'bisque';
+// };
+// const onBlur = event => {
+//   event.target.style.backgroundColor = 'white';
+// };
+// id.addEventListener('focus', onFocus);
+// pw.addEventListener('focus', onFocus);
+// id.addEventListener('blur', onBlur);
+// pw.addEventListener('blur', onBlur);
+
+// 2 keyboard event
+// let pw = document.getElementById('pw');
+// pw.addEventListener('keydown', () => {
+//   if (event.key == 'Enter') {
+//     alert('엔터키 누름');
+//   }
+// });
+
+// practice 1
+let id = document.getElementById('id');
+let pw = document.getElementById('pw');
+
+const onFocus = event => {
+  event.target.style.width = '200px';
+  event.target.style.height = '60px';
+};
+const onBlur = event => {
+  event.target.style.width = '100px';
+  event.target.style.height = '30px';
+};
+
+id.addEventListener('focus', onFocus);
+pw.addEventListener('focus', onFocus);
+id.addEventListener('blur', onBlur);
+pw.addEventListener('blur', onBlur);
+
+const onKeydown = event => {
+  width = Number(event.target.style.width.slice(0, -2));
+  console.log(event.key);
+  if (event.key == 'Backspace') {
+    event.target.style.width = String(width - 1) + 'px';
+  } else {
+    event.target.style.width = String(width + 1) + 'px';
+  }
+};
+id.addEventListener('keydown', onKeydown);
+pw.addEventListener('keydown', onKeydown);
+
+const onMousedown = event => {
+  event.target.style.backgroundColor = 'blue';
+};
+const onMouseup = event => {
+  event.target.style.backgroundColor = null;
+};
+id.addEventListener('mousedown', onMousedown);
+id.addEventListener('mouseup', onMouseup);
+pw.addEventListener('mousedown', onMousedown);
+pw.addEventListener('mouseup', onMouseup);
+// 3 mouse event
