@@ -403,7 +403,7 @@ function appendText(text, callback) {
 //   });
 
 // 요즘 방식?
-// async function getPosts() {
+// async function getPostList() {
 //   let response = await fetch('https://jsonplaceholder.typicode.com/posts');
 //   let data = await response.json();
 //   console.log(data);
@@ -461,7 +461,7 @@ function appendText(text, callback) {
 // }
 
 // 2 get 활용하기
-// async function getPost(id) {
+// async function getPostDetail(id) {
 //   let response = await fetch(
 //     `https://jsonplaceholder.typicode.com/posts/${id}`,
 //   );
@@ -469,7 +469,7 @@ function appendText(text, callback) {
 //   return data;
 // }
 
-// // getPost(1).then(data => {
+// // getPostDetail(1).then(data => {
 // //   let title = document.getElementById('title');
 // //   title.innerText = data.title;
 // //   let body = document.getElementById('body');
@@ -477,7 +477,7 @@ function appendText(text, callback) {
 // // });
 
 // async function insertPost(id) {
-//   let data = await getPost(id);
+//   let data = await getPostDetail(id);
 //   let title = document.getElementById('title');
 //   title.innerText = data.title;
 //   let body = document.getElementById('body');
@@ -507,126 +507,142 @@ function appendText(text, callback) {
 // }
 
 // practice
-// async function getPost(id) {
-//   let response = await fetch(
-//     `https://jsonplaceholder.typicode.com/posts/${id}`,
-//   );
-//   let data = await response.json();
-//   return data;
-// }
 
-// async function updatePost(post, id) {
-//   console.log(post);
-//   let response = await fetch(
-//     `https://jsonplaceholder.typicode.com/posts/${id}`,
-//     {
-//       method: 'PUT',
-//       body: JSON.stringify(post),
-//       headers: {
-//         'Content-type': 'application/json',
-//       },
-//     },
-//   );
-//   let data = await response.json();
-//   return data;
-// }
-
-// async function getPosts() {
-//   let response = await fetch(`https://jsonplaceholder.typicode.com/posts`);
-//   let data = await response.json();
-//   return data;
-// }
-
-// async function deletePost(id) {
-//   console.log(id);
-//   let response = await fetch(
-//     `https://jsonplaceholder.typicode.com/posts/${id}`,
-//     {
-//       method: 'DELETE',
-//     },
-//   );
-//   let data = await response.json();
-//   return data;
-// }
-
-// async function erasePost(id) {
-//   let data = await deletePost(id);
-//   let div = document.getElementById(`${id}`);
-//   div.remove();
-// }
-// async function showPosts() {
-//   let data = await getPosts();
-//   data.forEach(element => {
-//     document.body.insertAdjacentHTML(
-//       'beforeBegin',
-//       `<div id="${element.id}"><h2>${element.title}</h2><br><p>${element.body}</p><button onclick="erasePost(${element.id})">삭제</button></div>`,
-//     );
-//   });
-// }
-
-// async function getOnePost(id) {
-//   let data = await getPost(id);
-//   let title = document.getElementById('title');
-//   let body = document.getElementById('body');
-//   title.value = data.title;
-//   body.value = data.body;
-// }
-
-// async function modifyPost(id) {
-//   let title = document.getElementById('title').value;
-//   let body = document.getElementById('body').value;
-//   let post = {
-//     title: title,
-//     body: body,
-//   };
-//   let data = await updatePost(post, id);
-//   console.log(data);
-//   let div = document.getElementById(`${id}`);
-//   div.innerHTML = `<div id="${data.id}"><h2>${data.title}</h2><br><p>${data.body}</p><button onclick="erasePost(${data.id})">삭제</button></div>`;
-// }
-
-// showPosts();
-// getOnePost(1);
-
-// let button = document.querySelectorAll('button')[0];
-// button.onclick = () => modifyPost(1);
-
-// practice
-
-const LOCATION = {
-  london: {
-    latitude: 51.5,
-    longitude: -0.120000124,
-  },
-  newyork: {
-    latitude: 51.5,
-    longitude: -0.120000124,
-  },
-  seoul: {
-    latitude: 37.57,
-    longitude: 126.98,
-  },
-};
-
-function setTime(event) {
-  showInfo(event.target.id);
-}
-
-async function getInfo(country) {
-  console.log(LOCATION[country].latitude);
-
+// api
+async function getPostDetail(id) {
   let response = await fetch(
-    `https://api.open-meteo.com/v1/forecast?latitude=${LOCATION[country].latitude}&longitude=${LOCATION[country].longitude}&daily=weathercode&current_weather=true&timezone=auto`,
+    `https://jsonplaceholder.typicode.com/posts/${id}`,
   );
   let data = await response.json();
   return data;
 }
 
-async function showInfo(country) {
-  let data = await getInfo(country);
-  console.log(data);
-  document.body.insertAdjacentHTML(
-    'beforeEnd',
-    `<div><h2>${data.current_weather.weathercode}</h2><br><p>${data.current_weather.time}</p><br><p>"${data.current_weather.temperature}"</p></div>`,
+async function updatePost(post, id) {
+  let response = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${id}`,
+    {
+      method: 'PUT',
+      body: JSON.stringify(post),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    },
   );
+  let data = await response.json();
+  return data;
 }
+
+async function getPostList() {
+  let response = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+  let data = await response.json();
+  return data;
+}
+
+async function deletePost(id) {
+  console.log(id);
+  let response = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${id}`,
+    {
+      method: 'DELETE',
+    },
+  );
+  // let data = await response.json(); // 굳이 추출할 필요는 없음 보통 204
+  // return data;
+  return response.status;
+}
+
+// function
+async function erasePost(id) {
+  let data = await deletePost(id);
+  let div = document.getElementById(`${id}`);
+  div.remove();
+}
+
+async function showPostList() {
+  let data = await getPostList();
+  data.forEach(element => {
+    document.body.insertAdjacentHTML(
+      'beforeEnd',
+      `<div id="${element.id}">
+        <h2>${element.title}</h2>
+        <p>${element.body}</p>
+        <button onclick="erasePost(${element.id})">삭제</button>
+      </div>`,
+    );
+  });
+}
+
+async function showPostDetail(id) {
+  let data = await getPostDetail(id);
+  let title = document.getElementById('title');
+  let body = document.getElementById('body');
+  title.value = data.title;
+  body.value = data.body;
+}
+
+async function modifyPost(id) {
+  let post = {
+    title: document.getElementById('title').value,
+    body: document.getElementById('body').value,
+  };
+  let data = await updatePost(post, id);
+  console.log(data);
+  let div = document.getElementById(`${id}`);
+  div.innerHTML = `
+  <div id="${data.id}">
+    <h2>${data.title}</h2>
+    <p>${data.body}</p>
+    <button onclick="erasePost(${data.id})">삭제</button>
+  </div>`;
+}
+
+showPostList();
+showPostDetail(1);
+
+let button = document.querySelectorAll('button')[0];
+button.onclick = () => modifyPost(1);
+
+// practice 2
+
+// const LOCATION = {
+//   london: {
+//     latitude: 51.51,
+//     longitude: -0.13,
+//   },
+//   newyork: {
+//     latitude: 40.71,
+//     longitude: -74.01,
+//   },
+//   seoul: {
+//     latitude: 37.57,
+//     longitude: 126.98,
+//   },
+// };
+
+// async function getInfo(country) {
+//   console.log(LOCATION[country].latitude);
+
+//   let response = await fetch(
+//     `https://api.open-meteo.com/v1/forecast?latitude=${LOCATION[country].latitude}&longitude=${LOCATION[country].longitude}&daily=weathercode&current_weather=true&timezone=auto`,
+//   );
+//   let data = await response.json();
+//   return data;
+// }
+
+// async function showInfo(event) {
+//   country = event.target.id;
+//   let data = await getInfo(country);
+//   console.log(data);
+//   weather = data.current_weather.weathercode;
+//   if (weather === 0) {
+//     weather = '매우 맑음';
+//   } else if (weather === 1) {
+//     weather = '맑음';
+//   } else if (weather === 2) {
+//     weather = '약간 흐림';
+//   } else if (weather === 3) {
+//     weather = '흐림';
+//   }
+//   let div = document.getElementById('country');
+//   div.innerHTML = `<div id="country"><p>${event.target.innerText}</p><h2>${weather}</h2><br><p>현재 기온:${data.current_weather.temperature}도</p><br><p>기준시간:${data.current_weather.time}</p></div>`;
+// }
