@@ -39,6 +39,8 @@ async function getCategoryList() {
 }
 
 async function insertCategoryList(id) {
+  let select = document.getElementById('category');
+  select.innerHTML = '<option value="0" selected="selected">모두</option>';
   let result = await getCategoryList();
   if (result.length > 0) {
     result.forEach(element => {
@@ -58,7 +60,11 @@ async function getArticleList() {
   return data;
 }
 
-async function insertArticleList() {
+async function insertArticleList(...kwargs) {
+  if (kwargs) {
+    console.log(kwargs);
+    // insertAdjacentHTML 내부에서 실행
+  }
   let result = await getArticleList();
   if (result.length > 0) {
     result.forEach(element => {
@@ -150,8 +156,6 @@ async function insertArticle(id) {
 }
 
 async function updateAricle(postArticle, id) {
-  console.log(postArticle);
-  console.log(id);
   let token = getCookie('access_token');
   let response = await fetch(`${SERVER_URL}/blog/article/${id}`, {
     method: 'PUT',
@@ -193,14 +197,15 @@ insertArticleList();
 let select = document.getElementById('category');
 function logValue() {
   if (this.value == 0) {
-    // article = document.getElementsByClassName('article');
-    // for (let i = 0; i < article.length; i++) {
-    //   article[i].innerHTML = '';
-    // }
-    // insertArticleList();
-    location.href = 'index.html';
+    article = document.getElementsByClassName('article');
+    for (let i = 0; i < article.length; i++) {
+      article[i].innerHTML = '';
+    }
+    insertArticleList();
+    // location.href = 'index.html';
   } else {
     console.log(this.value);
+    insertArticleList(this.value);
   }
 }
 select.addEventListener('change', logValue, false);

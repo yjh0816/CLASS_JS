@@ -26,7 +26,6 @@ async function addCategory(category_name) {
 async function submitCategory() {
   let form = document.getElementById('form');
   let formData = new FormData(form);
-  console.log(formData);
   let result = await addCategory(formData);
   if (result.status === 201) {
     alert('카테고리 등록이 완료되었습니다!');
@@ -42,7 +41,6 @@ async function getCategoryList() {
 
 async function insertCategoryList() {
   let result = await getCategoryList();
-  console.log(result);
   if (result.length > 0) {
     result.forEach(element => {
       document.body.insertAdjacentHTML(
