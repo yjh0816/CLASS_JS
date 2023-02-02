@@ -13,6 +13,6 @@ async function postImage(formData) {
 async function submitImage() {
   let form = document.getElementById('form');
   let imageFormData = new FormData(form); // {image: 파일} -> input의 name 값
-  let result = postImage(imageFormData);
+  let result = await postImage(imageFormData);
   console.log(result);
 }

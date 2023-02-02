@@ -13,7 +13,8 @@ async function insertArticleList() {
     document.body.insertAdjacentHTML(
       'beforeEnd',
       `<div id="${element.id}">
-        <h1>${element.title}</h2>
+        <h1>${element.author}</h1>
+        <h1>${element.title}</h1>
         <p>${element.content}</p>
         <button onclick="deleteArticle(${element.id})">삭제</button>
       </div>`,
