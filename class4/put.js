@@ -38,38 +38,6 @@ async function insertArticle(id) {
   content.innerText = data.content;
 }
 
-async function getArticleList() {
-  let response = await fetch(`${SERVER_URL}/blog/article`);
-  let data = await response.json();
-  return data;
-}
-
-async function insertArticleList() {
-  let data = await getArticleList();
-  data.forEach(element => {
-    document.body.insertAdjacentHTML(
-      'beforeEnd',
-      `<div id="${element.id}">
-        <h1>${element.title}</h2>
-        <p>${element.content}</p>
-        <button onclick="eraseArticle(${element.id})">삭제</button>
-      </div>`,
-    );
-  });
-}
-async function deleteArticle(id) {
-  let response = await fetch(`${SERVER_URL}/blog/article/${id}`, {
-    method: 'DELETE',
-  });
-  return response.status;
-}
-
-async function eraseArticle(id) {
-  let result = deleteArticle(id);
-  let div = document.getElementById(`${id}`);
-  div.remove();
-}
-
 async function updateAricle(article, id) {
   let response = await fetch(`${SERVER_URL}/blog/article/${id}`, {
     method: 'PUT',
@@ -89,12 +57,4 @@ async function modifyArticle() {
     content: document.getElementById('content').value,
   };
   let result = await updateAricle(article, id);
-  // let div = document.getElementById(id);
-  // div.innerText = `
-  //   <div id="${result.id}">
-  //     <h1>${result.title}</h2>
-  //     <p>${result.content}</p>
-  //     <button onclick="eraseArticle(${result.id})">삭제</button>
-  //   </div>
-  // `;
 }
