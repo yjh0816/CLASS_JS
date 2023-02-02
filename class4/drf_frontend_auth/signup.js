@@ -61,5 +61,6 @@ async function submitLogin() {
   let result = await login(user);
   if (result.access_token) {
     setCookie('access_token', result.access_token);
+    alert('login success');
   }
 }

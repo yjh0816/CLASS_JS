@@ -1,6 +1,5 @@
 const SERVER_URL = 'http://127.0.0.1:8000';
 
-// method name, table name
 function getCookie(name) {
   let matches = document.cookie.match(
     new RegExp(

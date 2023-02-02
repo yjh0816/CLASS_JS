@@ -1,6 +1,16 @@
 const SERVER_URL = 'http://127.0.0.1:8000';
 
-// method name, table name
+function getCookie(name) {
+  let matches = document.cookie.match(
+    new RegExp(
+      '(?:^|; )' +
+        name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') +
+        '=([^;]*)',
+    ),
+  );
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
 async function getArticleList() {
   let response = await fetch(`${SERVER_URL}/blog/article`);
   let data = await response.json();
@@ -22,8 +32,12 @@ async function insertArticleList() {
   });
 }
 async function deleteArticle(id) {
+  let token = getCookie('access_token');
   let response = await fetch(`${SERVER_URL}/blog/article/${id}`, {
     method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
 
   if (response.status === 204) {
