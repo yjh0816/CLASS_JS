@@ -1,0 +1,32 @@
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>SNS</title>
+</head>
+<body>
+    <div id="modal">
+        <a href="category.html">카테고리 등록</a>
+        <form id="form">
+            <select name="category" id="post-category" placeholder="카테고리"/>
+            </select>
+            <input name="title" id="title" placeholder="제목">
+            <input name="content" id="content" placeholder="내용">
+            <input type="file" name="image">
+        </form>
+        <button onclick="submitArticle()">작성하기</button>
+        <button onclick="closeModal()">닫기</button>
+    </div>
+   <div>
+        <button onclick="showModal()">글쓰기</button>
+        <select name="category" id="category" placeholder="카테고리"/>
+            <option value="0" selected="selected">모두</option>
+        </select>
+   </div>
+    <div id="post-modal"> 
+    </div>
+    <div id="post">
+        <h1 id="title"></h1>
+        <p id="content"></p>
+    </div>
+</body>
+<script src="index.js"></script>
+</html>
