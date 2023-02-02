@@ -32,8 +32,9 @@ async function insertArticle(id) {
   let data = await getArticle(id);
   let title = document.getElementById('title');
   let content = document.getElementById('content');
-  let div = document.getElementsByTagName('div')[0];
-  div.id = id;
+  // let div = document.getElementsByTagName('div')[0];
+  // div.id = id;
+  title.parentElement.id = id;
   title.value = data.title;
   content.innerText = data.content;
 }
